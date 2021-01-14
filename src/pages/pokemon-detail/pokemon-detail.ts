@@ -1,3 +1,6 @@
+import { Observable } from 'rxjs/Observable';
+import { IPokemonDetails } from './../../app/models/pokemon-details';
+import { PokemonApiProvider } from './../../providers/pokemon-api/pokemon-api';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Pokemon } from './../../app/models/pokemon';
@@ -16,9 +19,10 @@ import { Pokemon } from './../../app/models/pokemon';
 })
 export class PokemonDetailPage {
   pok: Pokemon
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  pokDetails$: Observable<IPokemonDetails>
+  constructor(public navCtrl: NavController, public navParams: NavParams, private pokApi: PokemonApiProvider) {
     this.pok = navParams.get('pok');
-    console.log(this.pok);
+    this.pokDetails$ = pokApi.getPokemonDetails(this.pok);
   }
 
   ionViewDidLoad() {

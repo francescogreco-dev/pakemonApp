@@ -1,9 +1,9 @@
 import { IPokemonData } from "./pokemon-data"
 
 export class Pokemon {
-  name : string
-  img : string
-  id : number
+  name : string = ''
+  img : string = ''
+  id : number = 0
   private spriteUrl = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'
 
   constructor(pok: IPokemonData){

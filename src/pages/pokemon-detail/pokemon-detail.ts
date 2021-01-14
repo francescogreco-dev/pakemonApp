@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs/Observable';
 import { IPokemonDetails } from './../../app/models/pokemon-details';
 import { PokemonApiProvider } from './../../providers/pokemon-api/pokemon-api';
 import { Component } from '@angular/core';

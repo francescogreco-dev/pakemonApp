@@ -1,8 +1,6 @@
-import { IPokemonData } from './../../app/models/pokemon-data';
-import { IpokemonResult } from './../../app/models/pokemon-results';
 import { PokemonApiProvider } from './../../providers/pokemon-api/pokemon-api';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { LoadingController, NavController } from 'ionic-angular';
 import { Pokemon } from '../../app/models/pokemon';
 import { IPokemonDetails } from '../../app/models/pokemon-details';
 
@@ -14,10 +12,12 @@ import { IPokemonDetails } from '../../app/models/pokemon-details';
 export class HomePage {
 
   pokemons: [Pokemon];
+  loading: any;
 
-
-  constructor(public navCtrl: NavController, private pokeApi: PokemonApiProvider) {
+  constructor(public navCtrl: NavController, private pokeApi: PokemonApiProvider, private loadingCtrl: LoadingController) {
+    this.presentLoading();
     pokeApi.getPokemons().subscribe((resp: [Pokemon]) => {
+      this.loading.dismiss();
       this.pokemons = resp;
     })
   }
@@ -25,9 +25,23 @@ export class HomePage {
   showPokDetail(pok: Pokemon) {
     this.pokeApi.getPokemonDetails(pok).subscribe(
       (res: IPokemonDetails) => {
-        this.navCtrl.push('PokemonDetailPage', { pokDetails: res , pok: pok });
+        this.presentLoading();
+        this.navCtrl.push('PokemonDetailPage', { pokDetails: res, pok: pok });
       }
     )
+  }
+
+  presentLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Attendere...',
+      dismissOnPageChange: true
+    });
+
+    this.loading.present();
+
+    // setTimeout(() => {
+    //   this.loading.dismiss();
+    // }, 5000);
   }
 
 }

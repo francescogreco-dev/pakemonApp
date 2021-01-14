@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Dettagli del pokemon</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-title>{{pok.name}}</ion-title>
+    <ion-item>
+      <ion-thumbnail>
+        <img [src]="pok.img" />
+      </ion-thumbnail>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -11,7 +11,7 @@
       <img [src]="pokemon.img">
     </ion-thumbnail>
     <h2>{{pokemon.name}}</h2>
-    <button expand="block" clear item-end>
+    <button expand="block" clear item-end (click)="showPokDetail(pokemon)">
       <ion-icon name="arrow-dropright"></ion-icon>
     </button>
   </ion-item>

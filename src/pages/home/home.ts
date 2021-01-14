@@ -11,13 +11,17 @@ import { Pokemon } from '../../app/models/pokemon';
 
 export class HomePage {
 
-  pokemons :[Pokemon];
+  pokemons: [Pokemon];
 
 
   constructor(public navCtrl: NavController, pokeApi: PokemonApiProvider) {
-    pokeApi.getPokemons().subscribe((resp : [Pokemon]) => {
+    pokeApi.getPokemons().subscribe((resp: [Pokemon]) => {
       this.pokemons = resp;
     })
+  }
+
+  showPokDetail(p: Pokemon) {
+    this.navCtrl.push('PokemonDetailPage', { pok: p });
   }
 
 }

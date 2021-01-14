@@ -19,10 +19,10 @@ import { Pokemon } from './../../app/models/pokemon';
 })
 export class PokemonDetailPage {
   pok: Pokemon
-  pokDetails$: Observable<IPokemonDetails>
+  pokDetails: IPokemonDetails
   constructor(public navCtrl: NavController, public navParams: NavParams, private pokApi: PokemonApiProvider) {
     this.pok = navParams.get('pok');
-    this.pokDetails$ = pokApi.getPokemonDetails(this.pok);
+    this.pokDetails = this.navParams.get('pokDetails');
   }
 
   ionViewDidLoad() {

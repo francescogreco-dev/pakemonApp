@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Dettagli del pokemon</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-title color="primary" size="large">{{pok.name}}</ion-title>
+    <ion-item>
+      <ion-thumbnail>
+        <img [src]="pok.img" />
+      </ion-thumbnail>
+    </ion-item>
+    <ion-item>
+      Altezza: {{pokDetails.height}} cm.
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-title>Abilità</ion-title>
+    <ion-item *ngFor="let ab of pokDetails.abilities">
+      {{ab.ability.name}}
+      <ion-badge item-end>{{ab.slot}}</ion-badge>
+    </ion-item>
+  </ion-list>
+</ion-content>

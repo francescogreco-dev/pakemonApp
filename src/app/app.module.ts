@@ -12,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { PokemonApiProvider } from '../providers/pokemon-api/pokemon-api';
 import { HttpClientModule } from '@angular/common/http';
+import { PokDataProvider } from '../providers/pok-data/pok-data';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PokemonApiProvider
+    PokemonApiProvider,
+    PokDataProvider
   ]
 })
 export class AppModule {}

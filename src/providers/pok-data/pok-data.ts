@@ -24,7 +24,7 @@ export class PokDataProvider {
   }
 
   getPokemonDetails(pok: Pokemon): Observable<IPokemonDetails> {
-    return this.getPokemonDetails(pok);
+    return this.pokApi.getPokemonDetails(pok);
   }
 
 }

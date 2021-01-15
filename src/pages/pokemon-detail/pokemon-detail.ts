@@ -19,7 +19,7 @@ import { Pokemon } from './../../app/models/pokemon';
 export class PokemonDetailPage {
   pok: Pokemon
   pokDetails: IPokemonDetails
-  constructor(public navCtrl: NavController, public navParams: NavParams, private pokApi: PokemonApiProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.pok = navParams.get('pok');
     this.pokDetails = this.navParams.get('pokDetails');
   }

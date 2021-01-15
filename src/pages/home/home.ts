@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { LoadingController, NavController } from 'ionic-angular';
 import { Pokemon } from '../../app/models/pokemon';
 import { IPokemonDetails } from '../../app/models/pokemon-details';
+import { PokDataProvider } from './../../providers/pok-data/pok-data';
 
 @Component({
   selector: 'page-home',
@@ -14,7 +15,7 @@ export class HomePage {
   pokemons: [Pokemon];
   loading: any;
 
-  constructor(public navCtrl: NavController, private pokeApi: PokemonApiProvider, private loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, private pokeApi: PokDataProvider, private loadingCtrl: LoadingController) {
     this.presentLoading();
     pokeApi.getPokemons().subscribe((resp: [Pokemon]) => {
       this.loading.dismiss();

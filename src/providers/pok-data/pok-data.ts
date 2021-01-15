@@ -21,9 +21,9 @@ export class PokDataProvider {
   }
 
   getPokemons(): Observable<Pokemon[]> {
-    if(localStorage.getItem('pokemons')){
+    if (localStorage.getItem('pokemons')) {
       const pokResult = JSON.parse(localStorage.getItem('pokemons'));
-      if(pokResult){
+      if (pokResult) {
         return of(pokResult);
       }
     }
@@ -31,35 +31,36 @@ export class PokDataProvider {
   }
 
   getPokemonDetails(pok: Pokemon): Observable<IPokemonDetails> {
-    if(localStorage.getItem('pokemon')){
+    if (localStorage.getItem('pokemon')) {
       const pokResult = JSON.parse(localStorage.getItem('pokemon'));
-      if(pokResult){
+      if (pokResult) {
         return of(pokResult);
       }
     }
     return this.pokApi.getPokemonDetails(pok);
   }
 
-  getFavoritePokemons(){
-    let favorites: Pokemon[] = [] ;
-    if(localStorage.getItem('favorite-pokemons')){
+  getFavoritePokemons() {
+    let favorites: Pokemon[] = [];
+    if (localStorage.getItem('favorite-pokemons')) {
       const favoritesLocal = JSON.parse(localStorage.getItem('favorite-pokemons'));
-      if(favoritesLocal){
+      if (favoritesLocal) {
         favorites = favoritesLocal
       }
     }
     return of(favorites);
   }
 
-  addToFavorite(pok: Pokemon){
-    let favorites: Pokemon[] = [] ;
-    if(localStorage.getItem('favorite-pokemons')){
+  addToFavorite(pok: Pokemon) {
+    let favorites: Pokemon[] = [];
+    if (localStorage.getItem('favorite-pokemons')) {
       const favoritesLocal = JSON.parse(localStorage.getItem('favorite-pokemons'));
-      if(favoritesLocal){
+      if (favoritesLocal) {
         favorites = favoritesLocal;
       }
     }
     favorites.push(pok);
+    localStorage.setItem('favorite-pokemons', JSON.stringify(favorites));
   }
 
 }

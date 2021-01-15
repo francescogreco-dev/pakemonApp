@@ -13,6 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { PokemonApiProvider } from '../providers/pokemon-api/pokemon-api';
 import { HttpClientModule } from '@angular/common/http';
 import { PokDataProvider } from '../providers/pok-data/pok-data';
+import { FavoritePageModule } from '../pages/favorite/favorite.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PokDataProvider } from '../providers/pok-data/pok-data';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    FavoritePageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

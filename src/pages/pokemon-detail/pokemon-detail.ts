@@ -1,5 +1,5 @@
+import { PokDataProvider } from './../../providers/pok-data/pok-data';
 import { IPokemonDetails } from './../../app/models/pokemon-details';
-import { PokemonApiProvider } from './../../providers/pokemon-api/pokemon-api';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Pokemon } from './../../app/models/pokemon';
@@ -19,13 +19,17 @@ import { Pokemon } from './../../app/models/pokemon';
 export class PokemonDetailPage {
   pok: Pokemon
   pokDetails: IPokemonDetails
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private pokData : PokDataProvider, public navParams: NavParams) {
     this.pok = navParams.get('pok');
     this.pokDetails = this.navParams.get('pokDetails');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PokemonDetailPage');
+  }
+
+  addToFavorite(){
+    this.pokData.addToFavorite(this.pok);
   }
 
 }

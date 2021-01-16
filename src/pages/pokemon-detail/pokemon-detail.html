@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Dettagli del pokemon</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img [src]="pok.img" />
+      </ion-avatar>
+      <h1>{{pok.name}}</h1>
+      <p>altezza {{pokDetails.height}} cm, peso {{pokDetails.weight}}</p>
+    </ion-item>
+    <br>
+    <!-- <img src="img/advance-card-bttf.png"> -->
+
+    <ion-card-content>
+      <ion-list>
+        <ion-title class="ion-text-center">
+          <h2>Abilità</h2>
+        </ion-title>
+        <ion-item *ngFor="let ab of pokDetails.abilities">
+          {{ab.ability.name}}
+          <ion-badge item-end>{{ab.slot}}</ion-badge>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col col-6 text-center>
+        <button ion-button icon-start clear small (click)="addToFavorite()">
+          <ion-icon name="heart" color="{{isFavorite? 'danger' : 'primary'}}">
+
+          </ion-icon> Preferiti
+        </button>
+      </ion-col>
+      <ion-col col-6 text-center>
+        <button ion-button icon-start clear small>
+          <ion-icon name="share"></ion-icon> Condividi
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
+  <!-- <ion-list>
+    <ion-title color="primary" size="large">{{pok.name}}</ion-title>
+    <ion-item>
+      <ion-thumbnail>
+        <img [src]="pok.img" />
+      </ion-thumbnail>
+    </ion-item>
+    <ion-item>
+      Altezza: {{pokDetails.height}} cm.
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-title>Abilità</ion-title>
+    <ion-item *ngFor="let ab of pokDetails.abilities">
+      {{ab.ability.name}}
+      <ion-badge item-end>{{ab.slot}}</ion-badge>
+    </ion-item>
+  </ion-list> -->
+</ion-content>

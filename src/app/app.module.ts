@@ -10,6 +10,10 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { PokemonApiProvider } from '../providers/pokemon-api/pokemon-api';
+import { HttpClientModule } from '@angular/common/http';
+import { PokDataProvider } from '../providers/pok-data/pok-data';
+import { FavoritePageModule } from '../pages/favorite/favorite.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule,
+    FavoritePageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -34,7 +40,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    PokemonApiProvider,
+    PokDataProvider
   ]
 })
 export class AppModule {}

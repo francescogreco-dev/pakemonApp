@@ -1,6 +1,6 @@
 import { PokemonApiProvider } from './../../providers/pokemon-api/pokemon-api';
 import { Component } from '@angular/core';
-import { LoadingController, NavController } from 'ionic-angular';
+import { LoadingController, NavController, Events } from 'ionic-angular';
 import { Pokemon } from '../../app/models/pokemon';
 import { IPokemonDetails } from '../../app/models/pokemon-details';
 import { PokDataProvider } from './../../providers/pok-data/pok-data';
@@ -13,9 +13,18 @@ import { PokDataProvider } from './../../providers/pok-data/pok-data';
 export class HomePage {
 
   pokemons: Pokemon[];
+  allPoks: Pokemon[];
   loading: any;
 
-  constructor(public navCtrl: NavController, private pokeApi: PokDataProvider, private loadingCtrl: LoadingController) {
+  constructor(
+    public navCtrl: NavController,
+    private pokeApi: PokDataProvider,
+    private loadingCtrl: LoadingController,
+    evt: Events
+  ) {
+    evt.subscribe('pok-searched', res => {
+      this.filterPok(res);
+    })
     this.presentLoading();
     pokeApi.getPokemons().subscribe((resp: [Pokemon]) => {
       this.loading.dismiss();
@@ -25,6 +34,7 @@ export class HomePage {
         }
         return a.name > b.name ? 1 : -1;
       });
+      this.allPoks = this.pokemons.slice();
     })
   }
 
@@ -48,6 +58,14 @@ export class HomePage {
     // setTimeout(() => {
     //   this.loading.dismiss();
     // }, 5000);
+  }
+
+  filterPok(filter: string) {
+    //if (filter.length === 0) {
+      this.pokemons = this.allPoks;
+      //return;
+    //}
+    this.pokemons = this.pokemons.filter(pok => pok.name.startsWith(filter));
   }
 
 }

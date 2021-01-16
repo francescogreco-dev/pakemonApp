@@ -32,7 +32,7 @@ export class PokemonDetailPage {
   }
 
   ionViewDidLoad() {
-    this.pokData.getFavoritePokemons().subscribe(res => {
+    this.pokData.getFavoritePokemons('').subscribe(res => {
       const pok = res.filter(pokEle => pokEle.name === this.pok.name);
       this.isFavorite = pok.length > 0 ? true : false;
     })

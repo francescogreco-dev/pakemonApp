@@ -30,21 +30,24 @@ export class FavoritePage {
     private evt: Events,
     private pokData: PokDataProvider,
     private pokeApi: PokDataProvider,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
   ) {
+    evt.subscribe('pok-searched', res => {
+      // this.filterPok(res);
+      this.reloadPoks(res);
+    })
     this.evt.subscribe('favorite-added', () => {
-      this.reloadPoks();
+      this.reloadPoks('');
     })
   }
 
-  reloadPoks() {
-    this.favorites$ = this.pokData.getFavoritePokemons();
+  reloadPoks(filter: string) {
+    this.favorites$ = this.pokData.getFavoritePokemons(filter);
   }
 
   ionViewDidLoad() {
     //this.favorites$ = this.pokData.getFavoritePokemons();
-    this.reloadPoks();
-    console.log('ionViewDidLoad FavoritePage');
+    this.reloadPoks('');
   }
 
   showPokDetail(pok: Pokemon) {
@@ -68,5 +71,14 @@ export class FavoritePage {
     //   this.loading.dismiss();
     // }, 5000);
   }
+
+  // filterPok(filter: string) {
+  //   this.reloadPoks(filter);
+  //   // if (filter.length === 0) {
+  //   //   this.pokemons = this.allPoks;
+  //   //   return;
+  //   // }
+  //   // this.pokemons = this.pokemons.filter(pok => pok.name.startsWith(filter));
+  // }
 
 }

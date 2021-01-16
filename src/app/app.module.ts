@@ -14,6 +14,7 @@ import { PokemonApiProvider } from '../providers/pokemon-api/pokemon-api';
 import { HttpClientModule } from '@angular/common/http';
 import { PokDataProvider } from '../providers/pok-data/pok-data';
 import { FavoritePageModule } from '../pages/favorite/favorite.module';
+import { PokSearchBarModule } from '../components/components.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FavoritePageModule } from '../pages/favorite/favorite.module';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    FavoritePageModule
+    FavoritePageModule,
+    PokSearchBarModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

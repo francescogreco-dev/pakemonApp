@@ -42,12 +42,15 @@ export class PokDataProvider {
     return this.pokApi.getPokemonDetails(pok);
   }
 
-  getFavoritePokemons() {
+  getFavoritePokemons(filter: string) {
     let favorites: Pokemon[] = [];
     if (localStorage.getItem('favorite-pokemons')) {
       const favoritesLocal = JSON.parse(localStorage.getItem('favorite-pokemons'));
       if (favoritesLocal) {
-        favorites = favoritesLocal
+        favorites = favoritesLocal;
+        if (filter) {
+          favorites = favorites.filter(pok => pok.name.startsWith(filter));
+        }
       }
     }
     favorites.sort((a, b) => {

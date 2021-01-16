@@ -1,0 +1,7 @@
+<ion-searchbar
+  [(ngModel)]="text"
+  [showCancelButton]=true
+  [animated] = true
+  (ionInput)="onInput($event)"
+  (ionCancel)="onCancel($event)">
+</ion-searchbar>

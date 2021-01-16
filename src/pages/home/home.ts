@@ -19,7 +19,12 @@ export class HomePage {
     this.presentLoading();
     pokeApi.getPokemons().subscribe((resp: [Pokemon]) => {
       this.loading.dismiss();
-      this.pokemons = resp;
+      this.pokemons = resp.sort((a, b) => {
+        if (a.name === b.name) {
+          return 0;
+        }
+        return a.name > b.name ? 1 : -1;
+      });
     })
   }
 

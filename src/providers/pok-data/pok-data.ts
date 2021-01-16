@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { populateNodeData } from 'ionic-angular/umd/components/virtual-scroll/virtual-util';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { Pokemon } from '../../app/models/pokemon';
@@ -31,8 +32,9 @@ export class PokDataProvider {
   }
 
   getPokemonDetails(pok: Pokemon): Observable<IPokemonDetails> {
-    if (localStorage.getItem('pokemon')) {
-      const pokResult = JSON.parse(localStorage.getItem('pokemon'));
+    const storageID = 'pokemon-' + pok.name;
+    if (localStorage.getItem(storageID)) {
+      const pokResult = JSON.parse(localStorage.getItem(storageID));
       if (pokResult) {
         return of(pokResult);
       }
@@ -51,7 +53,7 @@ export class PokDataProvider {
     return of(favorites);
   }
 
-  addToFavorite(pok: Pokemon) {
+  addToFavorite(pok: Pokemon, add: boolean) {
     let favorites: Pokemon[] = [];
     if (localStorage.getItem('favorite-pokemons')) {
       const favoritesLocal = JSON.parse(localStorage.getItem('favorite-pokemons'));
@@ -59,7 +61,11 @@ export class PokDataProvider {
         favorites = favoritesLocal;
       }
     }
-    favorites.push(pok);
+    if (add) {
+      favorites.push(pok);
+    } else {
+      favorites = favorites.filter(res => res.name !== pok.name);
+    }
     localStorage.setItem('favorite-pokemons', JSON.stringify(favorites));
   }
 

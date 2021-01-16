@@ -37,7 +37,7 @@ export class PokemonApiProvider {
   getPokemonDetails(pok: Pokemon): Observable<IPokemonDetails> {
     return this.http.get<IPokemonDetails>(this.pokeUrl + pok.id).pipe(
       tap(res => {
-        localStorage.setItem('pokemon', JSON.stringify(res));
+        localStorage.setItem('pokemon-' + pok.name, JSON.stringify(res));
       })
     );
 

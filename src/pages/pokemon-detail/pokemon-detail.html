@@ -32,7 +32,9 @@
     <ion-row>
       <ion-col col-6 text-center>
         <button ion-button icon-start clear small (click)="addToFavorite()">
-          <ion-icon name="heart"></ion-icon> Preferiti
+          <ion-icon name="heart" color="{{isFavorite? 'danger' : 'primary'}}">
+
+          </ion-icon> Preferiti
         </button>
       </ion-col>
       <ion-col col-6 text-center>

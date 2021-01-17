@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="danger">
     <ion-title>Pokèmons</ion-title>
   </ion-navbar>
 </ion-header>
@@ -8,8 +8,8 @@
   <pok-search-bar></pok-search-bar>
   <ion-content>
     <ion-list>
-      <ion-item *ngFor="let pokemon of pokemons" >
-        <ion-thumbnail item-start >
+      <ion-item *ngFor="let pokemon of pokemons">
+        <ion-thumbnail item-start>
           <img [src]="pokemon.img">
         </ion-thumbnail>
         <h2>{{pokemon.name}}</h2>

@@ -1,5 +1,7 @@
 {
   "name": "pokemonapp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

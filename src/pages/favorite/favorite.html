@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="danger">
     <ion-title>Preferiti</ion-title>
   </ion-navbar>
 </ion-header>
@@ -13,7 +13,7 @@
           <img [src]="pokemon.img">
         </ion-thumbnail>
         <h2>{{pokemon.name}}</h2>
-        <button expand="block" style="background-color: transparent;" clear item-end (click)="showPokDetail(pokemon)">
+        <button expand="block" style="background-color: transparent; color:green" clear item-end (click)="showPokDetail(pokemon)">
           <ion-icon name="arrow-dropright"></ion-icon>
         </button>
       </ion-item>

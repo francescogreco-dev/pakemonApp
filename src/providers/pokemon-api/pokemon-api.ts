@@ -17,7 +17,7 @@ import { pipe } from 'rxjs';
 @Injectable()
 export class PokemonApiProvider {
   private pokeUrl = 'https://pokeapi.co/api/v2/pokemon/';
-  private limit = 1000;
+  private limit = 100;
   constructor(public http: HttpClient) {
     console.log('Hello PokemonApiProvider Provider');
   }
